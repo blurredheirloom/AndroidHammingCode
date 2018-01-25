@@ -7,3 +7,6 @@
 /build
 /captures
 .externalNativeBuild
+
+# игнорить временные файлы
+*~
