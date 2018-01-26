@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Присоединяет прослушиватели нажатий к элементам активити
+     * Присоединяет прослушиватели к элементам активити
      */
     protected void setListenersToElements() {
 
@@ -210,6 +210,8 @@ public class MainActivity extends AppCompatActivity {
                 R.anim.activity_main_animation_hiding);
     }
 
+
+    // функция, форматируюая текст в текстовом поле ввода после его изменения
     protected void formatInputView() {
         if (stopFlagForTextWatcher) {
             stopFlagForTextWatcher = false;
@@ -219,7 +221,25 @@ public class MainActivity extends AppCompatActivity {
 
         int selectionStart = editText_input.getSelectionStart();
         int selectionEnd = editText_input.getSelectionEnd();
-        Spannable richText = new SpannableString(editText_input.getText().toString());
+
+        // Вырезаем из строки все символы, кроме "0" и "1"
+        StringBuilder validStr = new StringBuilder("");
+        char symbol;
+        for (int i=0; i<editText_input.getText().length(); i++) {
+            symbol = editText_input.getText().charAt(i);
+            if (symbol == '0' || symbol == '1') {
+                validStr.append(symbol);
+            }
+        }
+
+        // создаем контейнер для Rich-текстового представления исправленной строки
+        Spannable richText = new SpannableString(validStr);
+
+        // исправляем границы выделения, т.к. после исправления они могут "поплыть"
+        if (selectionEnd > richText.length())
+            selectionEnd = richText.length();
+        if (selectionStart > selectionEnd)
+            selectionStart = selectionEnd;
 
         int quadroBlocksAmount = richText.length() / 4;
         boolean grey = false;
