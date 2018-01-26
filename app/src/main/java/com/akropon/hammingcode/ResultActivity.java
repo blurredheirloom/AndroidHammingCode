@@ -3,18 +3,26 @@ package com.akropon.hammingcode;
 import java.lang.Math;
 import java.util.Arrays;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ResultActivity extends AppCompatActivity {
     TextView textview_result;
     Button btn_back;
+    Button btn_copyAll;
+    Button btn_copyOnlyOutWord;
 
     String inStr;
     boolean isEncode;
+
+    String outWord;         // только выходное слово (заполняется по созданию активити)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +40,8 @@ public class ResultActivity extends AppCompatActivity {
     protected void findElements() {
         textview_result = findViewById(R.id.textview_result);
         btn_back = findViewById(R.id.btn_back);
+        btn_copyAll = findViewById(R.id.btn_copy_all);
+        btn_copyOnlyOutWord = findViewById(R.id.btn_copy_result_word);
     }
 
     /**
@@ -45,6 +55,20 @@ public class ResultActivity extends AppCompatActivity {
                 onClick_back();
             }
         });
+
+        btn_copyAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClick_copyAll();
+            }
+        });
+
+        btn_copyOnlyOutWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClick_copyOnlyOutWord();
+            }
+        });
     }
 
     /**
@@ -53,6 +77,8 @@ public class ResultActivity extends AppCompatActivity {
     protected void startCustomization() {
         isEncode = getIntent().getBooleanExtra("isEncode", true);
         inStr = getIntent().getStringExtra("inputString");
+
+        outWord = "{undefined}";
 
         textview_result.setText("");
 
@@ -72,6 +98,36 @@ public class ResultActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.activity_result_animation_disappearance,
                 R.anim.activity_main_animation_showing);
         finish();
+    }
+
+    protected void onClick_copyAll() {
+        try {
+            ClipboardManager clipboard =
+                    (ClipboardManager) this.getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("", textview_result.getText().toString());
+            clipboard.setPrimaryClip(clip);
+        } catch (Exception exc) {
+            Toast.makeText(this, "Неизвестная ошибка. Копирование невозможно.",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Toast.makeText(this, "Скопировано все.", Toast.LENGTH_SHORT).show();
+    }
+
+    protected void onClick_copyOnlyOutWord() {
+        try {
+            ClipboardManager clipboard =
+                    (ClipboardManager) this.getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("", outWord);
+            clipboard.setPrimaryClip(clip);
+        } catch (Exception exc) {
+            Toast.makeText(this, "Неизвестная ошибка. Копирование невозможно.",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Toast.makeText(this, "Скопировано выходное слово.", Toast.LENGTH_SHORT).show();
     }
 
     protected void launchEncoding() {
@@ -172,13 +228,8 @@ public class ResultActivity extends AppCompatActivity {
         outStr.append("\nЗакодированное слово:");
         outStr.append("\nb = ").append(strWithUndefKBits);
 
-        outStr.append("\n");
-        outStr.append("\n");
-        outStr.append("\n");
-
         textview_result.append(outStr.toString());
-
-        outStr.append("\n");
+        outWord = String.valueOf(strWithUndefKBits);
     }
 
     protected void launchDecoding() {
@@ -356,10 +407,13 @@ public class ResultActivity extends AppCompatActivity {
             outStr.append("\nТеперь убираем конрольные биты и получаем");
             outStr.append("\nдекодированное информационное слово:");
             outStr.append("\n").append(decodedWord);
-        }
 
+            outWord = String.valueOf(decodedWord);
+        }
 
         textview_result.append(outStr.toString());
     }
+
+
 
 }
