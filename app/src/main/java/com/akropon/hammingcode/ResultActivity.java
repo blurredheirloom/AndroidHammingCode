@@ -133,9 +133,9 @@ public class ResultActivity extends AppCompatActivity {
     protected void launchEncoding() {
         StringBuilder outStr = new StringBuilder();
         outStr.append("Исходное слово:");
-        outStr.append("\na = "+inStr);
-        outStr.append("\nДлина исходного слова:");
-        outStr.append("\n|a| = "+inStr.length());
+        outStr.append("\n  A = "+inStr);
+        outStr.append("\n\nДлина исходного слова:");
+        outStr.append("\n |A| = "+inStr.length());
 
         // Вычислим кол-во контрольных битов по формуле ниже.
         // kBitsAmount = roundDown[log2(|a|)]+1 = roundDown[log(|a|)/log(2)]+1
@@ -171,8 +171,8 @@ public class ResultActivity extends AppCompatActivity {
             t++;
         }
 
-        outStr.append("\nНачнем расставлять контрольные биты:");
-        outStr.append("\nb = ").append(strWithUndefKBits);
+        outStr.append("\n\nНачнем расставлять контрольные биты:");
+        outStr.append("\n  b = ").append(strWithUndefKBits);
 
         // слово с нулевыми контрольными битами
         boolean[] arrWithUndefKBits = new boolean[strWithUndefKBits.length];
@@ -193,13 +193,11 @@ public class ResultActivity extends AppCompatActivity {
             }
         }
 
-        outStr.append("\nМатрица контроля (принимаем контрольные биты как 0):");
-        outStr.append("\n    ").append(strWithUndefKBits);
+        outStr.append("\n\nМатрица контроля (принимаем контрольные биты как 0):");
+        outStr.append("\n     ").append(strWithUndefKBits);
         for (int i=0; i<kBitsAmount; i++) {
-            outStr.append("\nk").append(i+1);
+            outStr.append("\n  k").append(i+1);
             if (i<10)
-                outStr.append("  ");
-            else
                 outStr.append(" ");
             for (int j=0; j<strWithUndefKBits.length; j++)
                 outStr.append(kMatrix[i][j] ? '+' : '.');
@@ -216,18 +214,19 @@ public class ResultActivity extends AppCompatActivity {
                     kBits[i] = kBits[i] ^ arrWithUndefKBits[j];
 
 
-        outStr.append("\nЗначения контрольных битов:");
+        outStr.append("\n\nЗначения контрольных битов:");
         for (int i=0; i<kBitsAmount; i++) {
-            outStr.append("\nk").append(i + 1).append(" = ").append(kBits[i] ? '1' : '0');
+            outStr.append("\n  k").append(i + 1).append(" = ").append(kBits[i] ? '1' : '0');
         }
 
         // Генерируем закодированное слово
         for (int i=0; i<kBitsAmount; i++)
             strWithUndefKBits[kBitsPositions[i]] = kBits[i] ? '1' : '0';
 
-        outStr.append("\nЗакодированное слово:");
-        outStr.append("\nb = ").append(strWithUndefKBits);
+        outStr.append("\n\nЗакодированное слово:");
+        outStr.append("\n  B = ").append(strWithUndefKBits);
 
+        outStr.append("\n\n\n\n\n\n");  // чтобы прокрутить можно было подальше
         textview_result.append(outStr.toString());
         outWord = String.valueOf(strWithUndefKBits);
     }
@@ -235,9 +234,9 @@ public class ResultActivity extends AppCompatActivity {
     protected void launchDecoding() {
         StringBuilder outStr = new StringBuilder();
         outStr.append("Исходное (закодированное) слово:");
-        outStr.append("\nb = "+inStr);
-        outStr.append("\nДлина исходного слова:");
-        outStr.append("\n|b| = "+inStr.length());
+        outStr.append("\n  B = "+inStr);
+        outStr.append("\n\nДлина исходного слова:");
+        outStr.append("\n |B| = "+inStr.length());
 
         // Вычислим кол-во контрольных битов по формуле ниже.
         // kBitsAmount = roundDown[log2(|a|)]+1 = roundDown[log(|a|)/log(2)]+1
@@ -257,8 +256,8 @@ public class ResultActivity extends AppCompatActivity {
             strWithUndefKBits[kBitsPositions[i]] = 'x';
         */
 
-        outStr.append("\nНиже указаны позиции контрольных битов в исходном слове");
-        outStr.append('\n').append(inStr).append('\n');
+        outStr.append("\n\nНиже указаны позиции контрольных битов в исходном слове");
+        outStr.append("\n  ").append(inStr).append("\n  ");
         int s = 0;
         for (int i=0; i<inStr.length(); i++) {
             if (s<kBitsAmount) {
@@ -279,7 +278,7 @@ public class ResultActivity extends AppCompatActivity {
         for (int i=0; i<inArr.length; i++)
             inArr[i] = (inStr.charAt(i) == '1');
 
-        // "матрица контроля"
+        // "матрица синдромов"
         boolean[][] sMatrix = new boolean[kBitsAmount][inArr.length];
         for (int i=0; i<kBitsAmount; i++) {
             boolean isControlSeries = true;
@@ -295,12 +294,10 @@ public class ResultActivity extends AppCompatActivity {
         }
 
         outStr.append("\nМатрица синдромов:");
-        outStr.append("\n    ").append(inStr);
+        outStr.append("\n     ").append(inStr);
         for (int i=0; i<kBitsAmount; i++) {
-            outStr.append("\ns").append(i+1);
+            outStr.append("\n  s").append(i+1);
             if (i<10)
-                outStr.append("  ");
-            else
                 outStr.append(" ");
             for (int j=0; j<inArr.length; j++)
                 outStr.append(sMatrix[i][j] ? '+' : '.');
@@ -317,16 +314,17 @@ public class ResultActivity extends AppCompatActivity {
                     syndromes[i] = syndromes[i] ^ inArr[j];
 
 
-        outStr.append("\nЗначения синдромов:");
+        outStr.append("\n\nЗначения синдромов:");
         for (int i=0; i<kBitsAmount; i++) {
-            outStr.append("\ns").append(i + 1).append(" = ").append(syndromes[i] ? '1' : '0');
+            outStr.append("\n  s").append(i + 1).append(" = ").append(syndromes[i] ? '1' : '0');
         }
 
-        outStr.append("\nЗапишем синдромы в виде двоичного числа:");
-        outStr.append("\n S = ");
+        outStr.append("\n\nЗапишем синдромы в виде двоичного числа:");
+        outStr.append("\n  S = ");
         for (int i=syndromes.length-1; i>=0; i--) {
             outStr.append(syndromes[i] ? '1' : '0');
         }
+        outStr.append(" (двоичная форма)");
 
         // Проверяем, есть ли ошибка в закодированном слове
         boolean noErr = true;
@@ -343,13 +341,13 @@ public class ResultActivity extends AppCompatActivity {
         // Исправляем ошибку по необходимости
         if (noErr) {
             // noErr == true
-            outStr.append("\nТ.к. синдром S нулевой, значит ошибок не обнаружено.");
+            outStr.append("\n\nТ.к. синдром S нулевой, значит ошибок не обнаружено.");
             outStr.append("\nИсправление не требуется.");
 
 
         } else {
             // noErr == false
-            outStr.append("\nСиндром S не нулевой. Требуется исправление ошибки.");
+            outStr.append("\n\nСиндром S не нулевой. Требуется исправление ошибки.");
             outStr.append("\nЧисло S показывает позицию ошибки.");
 
             // Вычисляем позицию ошибки
@@ -363,13 +361,13 @@ public class ResultActivity extends AppCompatActivity {
             }
             errPos--;
 
-            outStr.append("\nS = ").append(errPos+1).append("(в десятичной форме)");
+            outStr.append("\n  S = ").append(errPos+1).append(" (десятичная форма)");
 
             // Проверка на наличие более одной ошибки
             if (errPos >= inArr.length) {
                 isMoreThan1Err = true;
             } else {
-                outStr.append("\nНиже указана позиция ошибки в исходном слове:");
+                outStr.append("\n\nНиже указана позиция ошибки в исходном слове:");
                 outStr.append("\n").append(inStr);
                 outStr.append("\n");
                 for (int i = 0; i < inStr.length(); i++)
@@ -378,14 +376,14 @@ public class ResultActivity extends AppCompatActivity {
                 // Исправляем ошибку в inArr
                 inArr[errPos] = !inArr[errPos];
 
-                outStr.append("\nЗакодированное слово с исправленной ошибкой:\n");
+                outStr.append("\n\nЗакодированное слово с исправленной ошибкой:\n  ");
                 for (int i = 0; i < inArr.length; i++)
                     outStr.append(inArr[i] ? '1' : '0');
             }
         }
 
         if (isMoreThan1Err) {
-            outStr.append("\nS > |b|, следовательно вхоное слово содержит более одной ошибки.");
+            outStr.append("\n\nТ.к. S > |B|, значит входное слово содержит две ошибки.");
             outStr.append("\nВосстановление невозможно.");
         } else {
             // На данный момент inArr считается не имеющим ошибок
@@ -404,9 +402,9 @@ public class ResultActivity extends AppCompatActivity {
                 t++;
             }
 
-            outStr.append("\nТеперь убираем конрольные биты и получаем");
+            outStr.append("\n\nТеперь убираем конрольные биты и получаем");
             outStr.append("\nдекодированное информационное слово:");
-            outStr.append("\n").append(decodedWord);
+            outStr.append("\n  A = ").append(decodedWord);
 
             outWord = String.valueOf(decodedWord);
         }
