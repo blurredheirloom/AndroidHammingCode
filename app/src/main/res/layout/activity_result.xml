@@ -13,18 +13,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_above="@+id/btn_copy_result_word"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:background="@android:drawable/edit_text"
+        android:scrollbars="none">
 
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
             <TextView
                 android:id="@+id/textview_result"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="monospace"
-                android:text="aaaaaaaaaaaaa\nlllllllllllll\nX            X" />
+                android:text="aaaaaaaaaaaaa\nlllllllllllll\nX            X"
+                android:textColor="@android:color/black" />
         </HorizontalScrollView>
     </ScrollView>
 
