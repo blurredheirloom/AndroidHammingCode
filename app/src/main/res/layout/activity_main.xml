@@ -11,6 +11,7 @@
         android:id="@+id/txt_main_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:text="Введите слово:"
         android:layout_alignParentTop="true"/>
 
@@ -22,6 +23,7 @@
         android:cursorVisible="true"
         android:inputType="none"
         android:gravity="start"
+        android:textSize="20sp"
         android:text=""
         android:layout_below="@+id/txt_main_1"
         android:layout_above="@+id/gridview_main"/>
@@ -29,72 +31,110 @@
     <GridLayout
         android:id="@+id/gridview_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:columnCount="4"
         android:layout_gravity="center"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_left"
             android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_columnWeight="1"
-            android:layout_height="wrap_content"
-            android:text="L" />
+            android:layout_rowWeight="1"
+            android:src="@drawable/btn_left"
+            android:scaleType="centerInside"/>
 
-        <Button
-            android:id="@+id/btn_right"
-            android:layout_width="0dp"
-            android:layout_columnWeight="1"
-            android:layout_height="wrap_content"
-            android:text="R" />
 
         <Button
             android:id="@+id/btn_addzero"
             android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_columnWeight="1"
-            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
             android:layout_rowSpan="3"
             android:layout_gravity="fill"
+            android:textSize="50sp"
             android:text="0" />
 
         <Button
             android:id="@+id/btn_addone"
             android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_columnWeight="1"
-            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
             android:layout_rowSpan="3"
             android:layout_gravity="fill"
+            android:textSize="50sp"
             android:text="1" />
 
-        <Button
+        <ImageButton
+            android:id="@+id/btn_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/btn_right"
+            android:scaleType="centerInside"/>
+
+        <ImageButton
             android:id="@+id/btn_deleteall"
             android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_columnWeight="1"
-            android:layout_height="wrap_content"
-            android:text="C" />
+            android:layout_rowWeight="1"
+            android:src="@drawable/btn_clear"
+            android:scaleType="centerInside"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_backspace"
             android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_columnWeight="1"
-            android:layout_height="wrap_content"
-            android:text="B" />
+            android:layout_rowWeight="1"
+            android:src="@drawable/btn_backspace"
+            android:scaleType="centerInside"/>
 
         <Button
             android:id="@+id/btn_encode"
             android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_columnWeight="1"
-            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:textSize="16sp"
             android:text="Закод" />
 
         <Button
             android:id="@+id/btn_decode"
             android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_columnWeight="1"
-            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:textSize="16sp"
             android:text="Декод" />
+
+        <!--<FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1">
+            <Button
+                android:id="@+id/test_btn"
+                android:layout_width="60sp"
+                android:layout_height="35sp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:text=""/>
+            <ImageView
+                android:id="@+id/test_img"
+                android:layout_width="45sp"
+                android:layout_height="45sp"
+                android:scaleType="centerInside"
+                android:src="@drawable/btn_backspace"
+                android:layout_gravity="center"/>
+        </FrameLayout>-->
     </GridLayout>
 
 

@@ -12,7 +12,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_above="@+id/btn_copy_result_word"
+        android:layout_above="@+id/btn_copy_all"
         android:layout_alignParentTop="true"
         android:background="@android:drawable/edit_text"
         android:scrollbars="none">
@@ -32,22 +32,24 @@
         </HorizontalScrollView>
     </ScrollView>
 
-    <Button
-        android:id="@+id/btn_copy_result_word"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_copy_all"
-        android:layout_centerHorizontal="true"
-        android:text="Копировать выходное слово" />
 
     <Button
         android:id="@+id/btn_copy_all"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_back"
+        android:layout_above="@+id/btn_copy_result_word"
         android:layout_centerHorizontal="true"
+        android:textSize="16sp"
         android:text="Копировать все" />
 
+    <Button
+        android:id="@+id/btn_copy_result_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_back"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"
+        android:text="Копировать выходное слово" />
 
     <Button
         android:id="@+id/btn_back"
@@ -55,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:textSize="16sp"
         android:text="Назад" />
 
 </RelativeLayout>

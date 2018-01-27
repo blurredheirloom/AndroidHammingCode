@@ -2,6 +2,7 @@ package com.akropon.hammingcode;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,17 +15,19 @@ import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText editText_input;
-    Button btn_left;
-    Button btn_right;
-    Button btn_backspace;
+    ImageButton btn_left;
+    ImageButton btn_right;
+    ImageButton btn_backspace;
     Button btn_addone;
     Button btn_addzero;
-    Button btn_deleteall;
+    ImageButton btn_deleteall;
     Button btn_encode;
     Button btn_decode;
 
