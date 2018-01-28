@@ -7,4 +7,6 @@ package com.akropon.hammingcode;
 public final class Cnst {
     static final long timeoutForDoubleClickingDeleteallBtn = 1000L; //ms
     static final String doubleClickingDeleteallBtnMsg = "Нажмите еще раз, чтобы удалить слово целиком";
+
+    static final String undefinedOutputFieldFiller = "{Undefined}";
 }

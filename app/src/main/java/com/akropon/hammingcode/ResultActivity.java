@@ -78,7 +78,7 @@ public class ResultActivity extends AppCompatActivity {
         isEncode = getIntent().getBooleanExtra("isEncode", true);
         inStr = getIntent().getStringExtra("inputString");
 
-        outWord = "{undefined}";
+        outWord = Cnst.undefinedOutputFieldFiller;
 
         textview_result.setText("");
 
