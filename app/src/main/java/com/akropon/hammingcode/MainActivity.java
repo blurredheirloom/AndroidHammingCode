@@ -1,8 +1,8 @@
 package com.akropon.hammingcode;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.media.Image;
+
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         findElements();
         setListenersToElements();
         elementsStartCustomization();
-
+        disableButtons(editText_input.length()>0);
     }
 
     /**
@@ -58,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
         btn_deleteall = findViewById(R.id.btn_deleteall);
         btn_encode = findViewById(R.id.btn_encode);
         btn_decode = findViewById(R.id.btn_decode);
-
-
     }
 
     /**
@@ -109,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         btn_encode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -131,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                    disableButtons(editText_input.length()>0);
             }
 
             @Override
@@ -139,6 +137,20 @@ public class MainActivity extends AppCompatActivity {
                 formatInputView();
             }
         });
+    }
+
+    private void disableButtons(boolean input)
+    {
+        btn_decode.setEnabled(input);
+        btn_encode.setEnabled(input);
+        btn_left.setEnabled(input);
+        btn_right.setEnabled(input);
+        btn_backspace.setEnabled(input);
+        btn_deleteall.setEnabled(input);
+        btn_left.setAlpha(input ? 1.0f : 0.3f);
+        btn_right.setAlpha(input ? 1.0f : 0.3f);
+        btn_backspace.setAlpha(input ? 1.0f : 0.3f);
+        btn_deleteall.setAlpha(input ? 1.0f : 0.3f);
     }
 
     /**
@@ -197,20 +209,23 @@ public class MainActivity extends AppCompatActivity {
             editText_input.setText("");
             previousTimeOfPressingDeleteallBtn = 0; //перестраховка
         } else {
-            Toast.makeText(this, Cnst.doubleClickingDeleteallBtnMsg, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.confirm_delete), Toast.LENGTH_SHORT).show();
             previousTimeOfPressingDeleteallBtn = time;
         }
     }
 
 
     protected void onClick_encode_decode(boolean isEncode) {
-        Intent resultActivityIntent = new Intent(MainActivity.this,
-                ResultActivity.class);
-        resultActivityIntent.putExtra("isEncode", isEncode);
-        resultActivityIntent.putExtra("inputString", editText_input.getText().toString());
-        startActivity(resultActivityIntent);
-        overridePendingTransition(R.anim.activity_result_animation_appearance,
-                R.anim.activity_main_animation_hiding);
+        if(editText_input.getText().toString().length()>0)
+        {
+            Intent resultActivityIntent = new Intent(MainActivity.this,
+                    ResultActivity.class);
+            resultActivityIntent.putExtra("isEncode", isEncode);
+            resultActivityIntent.putExtra("inputString", editText_input.getText().toString());
+            startActivity(resultActivityIntent);
+            overridePendingTransition(R.anim.activity_result_animation_appearance,
+                    R.anim.activity_main_animation_hiding);
+        }
     }
 
 
@@ -245,18 +260,18 @@ public class MainActivity extends AppCompatActivity {
             selectionStart = selectionEnd;
 
         int quadroBlocksAmount = richText.length() / 4;
-        boolean grey = false;
+        boolean bold = true;
         for (int i=0; i<quadroBlocksAmount; i++) {
-            richText.setSpan(new ForegroundColorSpan(grey ? Color.GRAY : Color.BLACK),
+            richText.setSpan(new android.text.style.StyleSpan(bold ? Typeface.BOLD: Typeface.NORMAL),
                     i*4, i*4+4,  Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            grey = !grey;
+            bold = !bold;
         }
 
-        if (richText.length() % 4 != 0) {
+        /*if (richText.length() % 4 != 0) {
             richText.setSpan(new ForegroundColorSpan(grey ? Color.GRAY : Color.BLACK),
                     quadroBlocksAmount*4, richText.length(),  Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             //grey = !grey;
-        }
+        }*/
 
         editText_input.setText(richText);
         editText_input.setSelection(selectionStart, selectionEnd);

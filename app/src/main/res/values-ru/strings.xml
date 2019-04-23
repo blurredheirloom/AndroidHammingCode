@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Hamming code</string>
+    <string name="encode">Закод</string>
+    <string name="decode">Декод</string>
+    <string name="subtitle">Введите слово</string>
+    <string name="copy_all">Скопировано все.</string>
+    <string name="error_copy">Неизвестная ошибка. Копирование невозможно.</string>
+    <string name="copy_word">Скопировано выходное слово.</string>
+    <string name="original_word">PИсходное слово</string>
+    <string name="original_word_length">Длина исходного слова</string>
+    <string name="control_bit">Hачнем расставлять контрольные биты</string>
+    <string name="control_matrix">Матрица контроля</string>
+    <string name="matrix_description">(принимаем контрольные биты как 0)</string>
+    <string name="control_bit_values">Значения контрольных битов</string>
+    <string name="encoded_word">Закодированное слово</string>
+    <string name="original">(закодированное)</string>
+    <string name="bits_position">Ниже указаны позиции контрольных битов в исходном слове</string>
+    <string name="matrix_errors">Матрица синдромов</string>
+    <string name="errors_meaning">Значения синдромов</string>
+    <string name="binary_errors">Запишем синдромы в виде двоичного числа</string>
+    <string name="no_errors">Т.к. синдром S нулевой, значит ошибок не обнаружено.</string>
+    <string name="no_correction">Число S показывает позицию ошибки.</string>
+    <string name="errors">Синдром S не нулевой. Требуется исправление ошибки.</string>
+    <string name="error_position">Число S показывает позицию ошибки.</string>
+    <string name="decimal">(десятичная форма)</string>
+    <string name="error_position_original">Ниже указана позиция ошибки в исходном слове</string>
+    <string name="correct_word">Закодированное слово с исправленной ошибкой</string>
+    <string name="two_errors">Т.к. S > |B|, значит входное слово содержит две ошибки.</string>
+    <string name="impossible_correction">Восстановление невозможно.</string>
+    <string name="remove_control_bits">Теперь убираем конрольные биты и получаем.</string>
+    <string name="decoded_word">декодированное информационное слово</string>
+    <string name="confirm_delete">Нажмите еще раз, чтобы удалить слово целиком</string>
+</resources>
