@@ -1,63 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="bottom"
-    tools:context="com.akropon.hammingcode.ResultActivity">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical"
+                app:layout_gravity="center"
+                tools:context="com.akropon.hammingcode.ResultActivity">
 
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_above="@+id/btn_copy_all"
-        android:layout_alignParentTop="true"
-        android:background="@android:drawable/edit_text"
-        android:scrollbars="none">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/gridview_main"
+            android:layout_alignParentTop="true"
+            android:background="@android:drawable/edit_text"
+            android:scrollbars="none"
+            android:textAlignment="textStart">
 
         <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none">
-
-            <TextView
-                android:id="@+id/textview_result"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="monospace"
-                android:text="aaaaaaaaaaaaa\nlllllllllllll\nX            X"
-                android:textColor="@android:color/black" />
+                android:scrollbars="none">
+
+            <TextView
+                    android:id="@+id/textview_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:textAlignment="textStart"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"/>
         </HorizontalScrollView>
     </ScrollView>
 
+    <GridLayout
+            android:id="@+id/gridview_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="0dp"
+            android:columnCount="3"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_copy_all"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_copy_result_word"
-        android:layout_centerHorizontal="true"
-        android:textSize="16sp"
-        android:text="Копировать все" />
+        <ImageButton
+                android:id="@+id/btn_copy_result_word"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:background="@null"
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                android:src="@drawable/btn_copy"/>
 
-    <Button
-        android:id="@+id/btn_copy_result_word"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_back"
-        android:layout_centerHorizontal="true"
-        android:textSize="16sp"
-        android:text="Копировать выходное слово" />
+        <ImageButton
+                android:id="@+id/btn_copy_all"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:background="@null"
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                android:src="@drawable/btn_copyall"/>
 
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="16sp"
-        android:text="Назад" />
+        <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:background="@null"
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                android:src="@drawable/btn_undo"/>
+
+    </GridLayout>
+
 
 </RelativeLayout>

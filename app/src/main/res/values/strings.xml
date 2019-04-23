@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">Hamming code</string>
+    <string name="encode">Encode</string>
+    <string name="decode">Decode</string>
+    <string name="subtitle">Insert codeword</string>
+    <string name="copy_all">Content copied</string>
+    <string name="error_copy">Unknown error. Unable to copy.</string>
+    <string name="copy_word">Output codeword copied</string>
+    <string name="original_word">Original codeword</string>
+    <string name="original_word_length">Original codeword length</string>
+    <string name="control_bit">Setting parity check bits</string>
+    <string name="control_matrix">Parity check matrix</string>
+    <string name="matrix_description">(Use parity check bits as 0)</string>
+    <string name="control_bit_values">Control bits value</string>
+    <string name="encoded_word">Encoded word</string>
+    <string name="original">(original)</string>
+    <string name="bits_position">Position of parity check bits</string>
+    <string name="matrix_errors">Matrix errors</string>
+    <string name="errors_meaning">Errors meaning</string>
+    <string name="binary_errors">Errors in binary</string>
+    <string name="no_errors">No errors in S</string>
+    <string name="no_correction">No correction needed</string>
+    <string name="errors">Errors found in S. Correction needed.</string>
+    <string name="error_position">S represents error position.</string>
+    <string name="decimal">(decimal)</string>
+    <string name="error_position_original">Error position in original codeword</string>
+    <string name="correct_word">Correct codeword</string>
+    <string name="two_errors">input codeword contains two errors.</string>
+    <string name="impossible_correction">Impossible correction</string>
+    <string name="remove_control_bits">Removing control bits.</string>
+    <string name="decoded_word">Decoded word</string>
+    <string name="confirm_delete">Press again to delete word</string>
 </resources>

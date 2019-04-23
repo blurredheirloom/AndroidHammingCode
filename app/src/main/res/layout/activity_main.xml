@@ -2,118 +2,160 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical"
     tools:context="com.akropon.hammingcode.MainActivity">
 
     <TextView
         android:id="@+id/txt_main_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Введите слово:"
-        android:layout_alignParentTop="true"/>
-
-    <EditText
-        android:id="@+id/edittext_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:drawable/edit_text"
-        android:cursorVisible="true"
-        android:inputType="none"
-        android:gravity="start"
-        android:textSize="20sp"
-        android:text=""
-        android:layout_below="@+id/txt_main_1"
-        android:layout_above="@+id/gridview_main"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/subtitle"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <EditText
+            android:id="@+id/edittext_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/gridview_main"
+            android:layout_below="@+id/txt_main_1"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="monospace"
+            android:gravity="start"
+            android:inputType="none"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAlignment="textStart"
+            android:textSize="24sp"
+            android:textCursorDrawable="@drawable/colored_cursor"/>
 
     <GridLayout
         android:id="@+id/gridview_main"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:columnCount="4"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="0dp"
+        android:columnCount="4"
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/btn_left"
-            android:layout_width="0dp"
+            android:layout_width="30dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:src="@drawable/btn_left"
-            android:scaleType="centerInside"/>
+            android:layout_columnWeight="0.8"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/btn_left" />
 
 
         <Button
             android:id="@+id/btn_addzero"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
+            android:layout_rowSpan="1"
             android:layout_rowWeight="1"
-            android:layout_rowSpan="3"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:textSize="50sp"
-            android:text="0" />
+            android:backgroundTint="@color/colorAccent"
+            android:text="0"
+            android:textAllCaps="false"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_addone"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
+            android:layout_rowSpan="1"
             android:layout_rowWeight="1"
-            android:layout_rowSpan="3"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:textSize="50sp"
-            android:text="1" />
+            android:backgroundTint="@color/colorAccent"
+            android:text="1"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/btn_right"
-            android:layout_width="0dp"
+            android:layout_width="24dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:src="@drawable/btn_right"
-            android:scaleType="centerInside"/>
+            android:layout_columnWeight="0.8"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/btn_right" />
 
         <ImageButton
             android:id="@+id/btn_deleteall"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:src="@drawable/btn_clear"
-            android:scaleType="centerInside"/>
-
-        <ImageButton
-            android:id="@+id/btn_backspace"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:src="@drawable/btn_backspace"
-            android:scaleType="centerInside"/>
-
-        <Button
-            android:id="@+id/btn_encode"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:textSize="16sp"
-            android:text="Закод" />
+            android:layout_columnWeight="0.8"
+            android:background="@null"
+            android:scaleType="center"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/btn_clear" />
 
         <Button
             android:id="@+id/btn_decode"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:textSize="16sp"
-            android:text="Декод" />
+            android:layout_columnWeight="3
+"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/decode"
+            android:textAllCaps="true"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_encode"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="3
+"
+
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/encode"
+            android:textAllCaps="true"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btn_backspace"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="0.8"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/btn_backspace" />
 
         <!--<FrameLayout
             android:layout_width="0dp"

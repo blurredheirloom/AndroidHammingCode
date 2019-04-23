@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Codifica di Hamming</string>
+    <string name="encode">Codifica</string>
+    <string name="decode">Decodifica</string>
+    <string name="subtitle">Inserisci parola</string>
+    <string name="copy_all">Tutto il contenuto copiato</string>
+    <string name="error_copy">Errore sconosciuto. Impossibile copiare.</string>
+    <string name="copy_word">Parola codificata copiata</string>
+    <string name="original_word">Parola originale</string>
+    <string name="original_word_length">Lunghezza parola originale</string>
+    <string name="control_bit">Impostazione bit di controllo</string>
+    <string name="control_matrix">Matrice di controllo </string>
+    <string name="matrix_description">(Prende bit di controllo come 0)</string>
+    <string name="control_bit_values">Valori bit di controllo</string>
+    <string name="encoded_word">Parola codificata</string>
+    <string name="original">(originale)</string>
+    <string name="bits_position">Posizione bit di controllo della parola originale</string>
+    <string name="matrix_errors">Matrice errori</string>
+    <string name="errors_meaning">Significato errori</string>
+    <string name="binary_errors">Errori in forma binaria</string>
+    <string name="no_errors">Il numero di errori in S è zero</string>
+    <string name="no_correction">Nessuna correzione richiesta</string>
+    <string name="errors">Il numero di errori in S non è nullo. Correzione necessaria.</string>
+    <string name="error_position">Il numero S indica la posizione dell\'errore.</string>
+    <string name="decimal">(forma decimale)</string>
+    <string name="error_position_original">Posizione dell\'errore nella parola sorgente</string>
+    <string name="correct_word">Parola corretta</string>
+    <string name="two_errors">la parola di input contiene due errori.</string>
+    <string name="impossible_correction">La correzione non è possibile.</string>
+    <string name="remove_control_bits">Rimozione dei bit di controllo.</string>
+    <string name="decoded_word">Parola decodificata</string>
+    <string name="confirm_delete">Premi di nuovo per eliminare tutta la parola</string>
+</resources>
