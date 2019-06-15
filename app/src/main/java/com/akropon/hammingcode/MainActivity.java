@@ -12,6 +12,9 @@ import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,7 +44,26 @@ public class MainActivity extends AppCompatActivity {
         findElements();
         setListenersToElements();
         elementsStartCustomization();
-        disableButtons(editText_input.length()>0);
+        disableButtons(editText_input.length() > 0);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_item_about_us) {
+            Intent resultActivityIntent = new Intent(MainActivity.this,
+                    AboutUsActivity.class);
+            startActivity(resultActivityIntent);
+            overridePendingTransition(R.anim.activity_result_animation_appearance,
+                    R.anim.activity_main_animation_hiding);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -129,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    disableButtons(editText_input.length()>0);
+                disableButtons(editText_input.length() > 0);
             }
 
             @Override
@@ -139,8 +161,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void disableButtons(boolean input)
-    {
+    private void disableButtons(boolean input) {
         btn_decode.setEnabled(input);
         btn_encode.setEnabled(input);
         btn_left.setEnabled(input);
@@ -176,13 +197,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onClick_right() {
         editText_input.setSelection(editText_input.getSelectionEnd());
         if (editText_input.getSelectionEnd() != editText_input.length())
-            editText_input.setSelection(editText_input.getSelectionEnd()+1);
+            editText_input.setSelection(editText_input.getSelectionEnd() + 1);
     }
 
     protected void onClick_left() {
         editText_input.setSelection(editText_input.getSelectionStart());
         if (editText_input.getSelectionEnd() != 0)
-            editText_input.setSelection(editText_input.getSelectionEnd()-1);
+            editText_input.setSelection(editText_input.getSelectionEnd() - 1);
     }
 
     protected void insertInEditTextOfInput(char _char) {
@@ -199,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
             editText_input.getText().delete(sel_st, sel_en);
         } else {
             if (sel_en != 0)
-                editText_input.getText().delete(sel_en-1, sel_en);
+                editText_input.getText().delete(sel_en - 1, sel_en);
         }
     }
 
@@ -216,8 +237,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     protected void onClick_encode_decode(boolean isEncode) {
-        if(editText_input.getText().toString().length()>0)
-        {
+        if (editText_input.getText().toString().length() > 0) {
             Intent resultActivityIntent = new Intent(MainActivity.this,
                     ResultActivity.class);
             resultActivityIntent.putExtra("isEncode", isEncode);
@@ -243,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
         // Вырезаем из строки все символы, кроме "0" и "1"
         StringBuilder validStr = new StringBuilder("");
         char symbol;
-        for (int i=0; i<editText_input.getText().length(); i++) {
+        for (int i = 0; i < editText_input.getText().length(); i++) {
             symbol = editText_input.getText().charAt(i);
             if (symbol == '0' || symbol == '1') {
                 validStr.append(symbol);
@@ -261,15 +281,15 @@ public class MainActivity extends AppCompatActivity {
 
         int quadroBlocksAmount = richText.length() / 4;
         boolean bold = true;
-        for (int i=0; i<quadroBlocksAmount; i++) {
-            richText.setSpan(new android.text.style.StyleSpan(bold ? Typeface.BOLD: Typeface.NORMAL),
-                    i*4, i*4+4,  Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        for (int i = 0; i < quadroBlocksAmount; i++) {
+            richText.setSpan(new android.text.style.StyleSpan(bold ? Typeface.BOLD : Typeface.NORMAL),
+                    i * 4, i * 4 + 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             bold = !bold;
         }
 
         if (richText.length() % 4 != 0) {
             richText.setSpan(new android.text.style.StyleSpan(bold ? Typeface.BOLD : Typeface.NORMAL),
-                    quadroBlocksAmount*4, richText.length(),  Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    quadroBlocksAmount * 4, richText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
         editText_input.setText(richText);
