@@ -30,4 +30,12 @@
     <string name="remove_control_bits">Rimozione dei bit di controllo.</string>
     <string name="decoded_word">Parola decodificata</string>
     <string name="confirm_delete">Premi di nuovo per eliminare tutta la parola</string>
+    <string name="author">Autore</string>
+    <string name="design">Design</string>
+    <string name="languages">Traduzione</string>
+    <string name="russian_ru">Russo (RU)</string>
+    <string name="english_en">Inglese (EN)</string>
+    <string name="italian_it">Italiano (IT)</string>
+    <string name="contacts">Contatti</string>
+    <string name="about_us">Informazioni</string>
 </resources>
