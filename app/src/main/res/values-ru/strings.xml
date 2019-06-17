@@ -6,7 +6,7 @@
     <string name="copy_all">Скопировано все.</string>
     <string name="error_copy">Неизвестная ошибка. Копирование невозможно.</string>
     <string name="copy_word">Скопировано выходное слово.</string>
-    <string name="original_word">PИсходное слово</string>
+    <string name="original_word">Исходное слово</string>
     <string name="original_word_length">Длина исходного слова</string>
     <string name="control_bit">Hачнем расставлять контрольные биты</string>
     <string name="control_matrix">Матрица контроля</string>
@@ -27,7 +27,20 @@
     <string name="correct_word">Закодированное слово с исправленной ошибкой</string>
     <string name="two_errors">Т.к. S > |B|, значит входное слово содержит две ошибки.</string>
     <string name="impossible_correction">Восстановление невозможно.</string>
-    <string name="remove_control_bits">Теперь убираем конрольные биты и получаем.</string>
+    <string name="remove_control_bits">Теперь убираем конрольные биты и получаем</string>
     <string name="decoded_word">декодированное информационное слово</string>
     <string name="confirm_delete">Нажмите еще раз, чтобы удалить слово целиком</string>
+
+    <string name="about_us">О нас</string>
+    <string name="author">Автор</string>
+    <string name="design">Дизайн</string>
+    <string name="languages">Языки</string>
+    <string name="russian_ru">Русский (RU)</string>
+    <string name="english_en">Английский (EN)</string>
+    <string name="italian_it">Итальянский (IT)</string>
+    <string name="contacts">Контакты</string>
+    <string name="vladimirPetrenko">Владимир Петренко</string>
+    <string name="vladimirPetrenko_mail">akropon@gmail.com</string>
+    <string name="mysteryPerson">Matteo Stracquadanio</string>
+    <string name="misteryPerson_mail">ares.asia@virgilio.it</string>
 </resources>
