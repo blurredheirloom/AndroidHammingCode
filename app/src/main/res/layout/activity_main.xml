@@ -25,20 +25,21 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/edittext_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/gridview_main"
-        android:layout_below="@+id/txt_main_1"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:fontFamily="monospace"
-        android:gravity="start"
-        android:inputType="none"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+            android:id="@+id/edittext_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/gridview_main"
+            android:layout_below="@+id/txt_main_1"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="monospace"
+            android:gravity="start"
+            android:inputType="none"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAlignment="textStart"
+            android:textSize="24sp"
+            android:textCursorDrawable="@drawable/colored_cursor"/>
 
     <GridLayout
         android:id="@+id/gridview_main"
